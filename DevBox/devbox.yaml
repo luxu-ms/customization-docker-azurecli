@@ -24,5 +24,7 @@ setupTasks:
         git clone https://github.com/luxu-ms/test-private-repo.git
 
         # Logout to make current user in docker user group to take effect
+        Write-Host "Logging out to make current user in docker user group to take effect"
+        Start-Sleep -s 5
         logoff
       runAsUser: true
