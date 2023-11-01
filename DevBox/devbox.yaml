@@ -1,0 +1,23 @@
+name: devbox-customization
+image: MicrosoftVisualStudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+hostInformation: general_i_8c32gb256ssd_v2
+supportsHibernation: true
+setupTasks:
+  - task: choco
+    inputs:
+      package: gcloudsdk
+  - task: powershell
+    inputs:
+      command: |
+        # Install WSL2 distros
+        wsl --install -d Ubuntu-22.04
+
+        # Install VSCode extensions
+        code --install-extension ms-vscode-remote.remote-wsl
+
+        # Install Docker Desktop
+        choco install docker-desktop -y
+
+        # Logout to make current user in docker user group to take effect
+        logoff
+      runAsUser: true
