@@ -18,6 +18,11 @@ setupTasks:
         # Install Docker Desktop
         choco install docker-desktop -y
 
+        # Clone a private repository
+        New-Item -ItemType Directory -Path "C:\temp" -Force
+        Set-Location "C:\temp"
+        git clone https://github.com/luxu-ms/test-private-repo.git
+
         # Logout to make current user in docker user group to take effect
         logoff
       runAsUser: true
